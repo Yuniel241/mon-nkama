@@ -10,11 +10,11 @@ services:
       - key: NODE_ENV
         value: production
       - key: MONGODB_URI
-        fromDatabase:
-          name: mongodb
-          property: uri
+        sync: false
       - key: JWT_SECRET
-        generateValue: true
+        sync: false
+      - key: CLIENT_URL
+        value: https://mon-nkama-client.onrender.com
 
   - type: web
     name: mon-nkama-client
@@ -23,11 +23,6 @@ services:
     plan: free
     buildCommand: cd client && npm install && npm run build
     staticPublishPath: client/dist
-    routes:
-      - path: /api
-        destination: http://mon-nkama-server:5000
-
-databases:
-  - name: mongodb
-    plan: free
-    provider: mongodb 
+    envVars:
+      - key: VITE_API_URL
+        value: https://mon-nkama-server.onrender.com
