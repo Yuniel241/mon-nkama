@@ -25,6 +25,5 @@ services:
       - key: VITE_API_URL
         value: https://onrender.com
     routes:
-      - type: rewrite
-        path: /*
+      - source: /*
         destination: /index.html
