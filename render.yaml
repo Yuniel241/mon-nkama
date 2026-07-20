@@ -23,8 +23,8 @@ services:
     staticPublishPath: client/dist
     envVars:
       - key: VITE_API_URL
-        value: https://mon-nkama-server.onrender.com
+        value: https://onrender.com
     routes:
-      - from: /*
-        to: /index.html
-        status: 200
+      - type: rewrite
+        path: /*
+        destination: /index.html
