@@ -1,0 +1,9 @@
+node_modules/
+.env
+dist/
+server/src/uploads/listings/*.jpg
+server/src/uploads/listings/*.png
+server/src/uploads/profiles/*
+!server/src/uploads/listings/.gitkeep
+!server/src/uploads/profiles/.gitkeep
+.DS_Store
