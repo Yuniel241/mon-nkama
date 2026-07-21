@@ -48,7 +48,7 @@ const Listings = () => {
         {logements.length === 0 && <p>Aucune annonce dans cette catégorie.</p>}
         {logements.map((l) => (
           <div key={l._id} className="card" style={{ padding: 16, display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
-            <img src={l.photos[0]} style={{ width: 90, height: 70, objectFit: "cover", borderRadius: 10 }} />
+            <img src={l.photos[0] ? (import.meta.env.VITE_API_URL.replace('/api','') + '/' + String(l.photos[0]).replace(/^\/+/, '')) : ''} style={{ width: 90, height: 70, objectFit: "cover", borderRadius: 10 }} />
             <div style={{ flex: 1, minWidth: 200 }}>
               <Link to={`/logement/${l._id}`} style={{ fontWeight: 700, color: "var(--nk-navy-900)" }}>{l.titre}</Link>
               <p style={{ fontSize: 13, marginTop: 4 }}>{l.quartier}, {l.ville} · {new Intl.NumberFormat("fr-FR").format(l.prix)} FCFA</p>

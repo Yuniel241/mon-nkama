@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import getFullImageUrl from "../utils/getFullImageUrl.js";
 import { FiCheckCircle, FiStar, FiLock } from "react-icons/fi";
 
 const typeLabels = {
@@ -92,7 +93,7 @@ const ListingCard = ({ logement, userSubscription = null, layout = "grid" }) => 
         }}
       >
         {photo ? (
-          <img src={photo} alt={logement.titre} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          <img src={getFullImageUrl(photo)} alt={logement.titre} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         ) : (
           <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--nk-ink-soft)" }}>
             Pas de photo

@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import api from "../api/axios.js";
 import { useAuth } from "../context/AuthContext.jsx";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
+import getFullImageUrl from "../utils/getFullImageUrl.js";
 import { FiCheckCircle, FiFlag, FiPhone, FiMessageCircle, FiLink2, FiCrosshair } from "react-icons/fi";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
@@ -167,7 +168,7 @@ const ListingDetail = () => {
             {/* Use 4:3 ratio to match list thumbnails and keep same crop */}
             <div style={{ width: "100%", paddingBottom: "75%", position: "relative" }}>
               <img
-                src={logement.photos[activePhoto]}
+                src={getFullImageUrl(logement.photos[activePhoto])}
                 alt={logement.titre}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center", display: "block" }}
               />
@@ -240,7 +241,7 @@ const ListingDetail = () => {
                 }}
               >
                 <img
-                  src={p}
+                  src={getFullImageUrl(p)}
                   alt={`${logement.titre} - ${i + 1}`}
                   style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center center" }}
                 />

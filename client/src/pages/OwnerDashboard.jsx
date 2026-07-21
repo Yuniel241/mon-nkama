@@ -41,7 +41,7 @@ const OwnerDashboard = () => {
         {logements.length === 0 && <p>Vous n'avez pas encore publié d'annonce.</p>}
         {logements.map((l) => (
           <div key={l._id} className="card" style={{ padding: "clamp(12px, 3vw, 16px)", display: "flex", gap: "clamp(12px, 3vw, 16px)", alignItems: "center", flexWrap: "wrap", width: "100%" }}>
-            <img src={l.photos[0]} style={{ width: "clamp(70px, 20vw, 90px)", height: "clamp(54px, 15vw, 70px)", objectFit: "cover", borderRadius: 10, flexShrink: 0 }} />
+            <img src={l.photos[0] ? (import.meta.env.VITE_API_URL.replace('/api','') + '/' + String(l.photos[0]).replace(/^\/+/, '')) : ''} style={{ width: "clamp(70px, 20vw, 90px)", height: "clamp(54px, 15vw, 70px)", objectFit: "cover", borderRadius: 10, flexShrink: 0 }} />
             <div style={{ flex: 1, minWidth: "clamp(140px, 40vw, 180px)" }}>
               <Link to={`/logement/${l._id}`} style={{ fontWeight: 700, color: "var(--nk-navy-900)" }}>{l.titre}</Link>
               <p style={{ fontSize: 13, marginTop: 4 }}>{l.quartier}, {l.ville} · {new Intl.NumberFormat("fr-FR").format(l.prix)} FCFA</p>

@@ -497,7 +497,7 @@ const PublishListing = () => {
           <div style={{ marginBottom: 16 }}>
             <label style={{ fontSize: 13, fontWeight: 600 }}>Photos actuelles</label>
             <div style={{ display: "flex", gap: 8, marginTop: 8, flexWrap: "wrap" }}>
-              {existingPhotos.map((p, i) => <img key={i} src={p} style={{ width: 80, height: 80, objectFit: "cover", borderRadius: 8 }} />)}
+              {existingPhotos.map((p, i) => <img key={i} src={p ? (import.meta.env.VITE_API_URL.replace('/api','') + '/' + String(p).replace(/^\/+/, '')) : ''} style={{ width: 80, height: 80, objectFit: "cover", borderRadius: 8 }} />)}
             </div>
           </div>
         )}
